@@ -1,0 +1,66 @@
+#ifndef SPOTIFY_HEAD_H_INCLUDED
+#define SPOTIFY_HEAD_H_INCLUDED
+
+#include <iostream>
+using namespace std;
+
+typedef struct record {
+    int id;
+    string title;
+    string artist;
+    string album;
+    string genre;
+    int year;
+};
+// ------------------------------------------ //
+
+// LIBRARY SPOTIFY //
+
+typedef struct elemenLibrary *adrLibrary;
+
+struct libraryList {
+    adrLibrary first;
+};
+
+struct elemenLibrary {
+    record infoSong;
+    adrLibrary next;
+};
+
+void createLibraryList(libraryList &L);
+
+adrLibrary makeElemenSong(record x);
+
+void inputSongToLibrary(libraryList &L, adrLibrary p);
+
+void deleteSongFromLibrary(libraryList &L, adrPlaylist p,string title);
+
+void printLibraryList(libraryList L);
+
+adrLibrary searchSong(libraryList &L, string title);
+// ------------------------------------------ //
+
+// PLAYLIST SPOTIFY //
+
+typedef struct elemenPlaylist *adrPlaylist;
+
+struct Playlist {
+    adrPlaylist first;
+};
+
+struct elemenPlaylist {
+    infoSongPlaylist record;
+    adrPlaylist next;
+};
+
+void createPlaylist(Playlist &Pl);
+
+adrPlaylist makeElemenPlaylist(record x);
+
+void inputSongToPlaylist(Playlist &Pl, adrPlaylist q);
+
+void deleteSongFromPlaylist(Playlist &PL, adrPlaylist q, string title);
+
+void printPlaylist(Playlist &Pl);
+
+#endif // SPOTIFY_HEAD_H_INCLUDED
